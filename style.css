@@ -4,18 +4,27 @@
     height: 800px;
     border: 2px solid #000;
     overflow: hidden;
+    perspective: 600px;
 }
 
 #world {
     position: absolute;
     width: inherit;
     height: inherit;
+    transform-style: preserve-3d;
 }
 
-#square {
+.square {
     position: absolute;
-    height: 300px;
-    width: 300px;
-    background: red;
-    transform: translate3d(600px, 400px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(45deg);
+} 
+
+#pawn {
+    display: none;
+    position: absolute;
+    top: 400px;
+    left: 600px;
+    width: 100px;
+    height: 100px;
+    background: green;
+    transform: translate(-50%, -50%);
 }
