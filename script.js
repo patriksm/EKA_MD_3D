@@ -1,5 +1,11 @@
 var world = document.getElementById("world");
 
+var velocity = 5;
+var forward = 0;
+var backward = 0;
+var left = 0;
+var right = 0;
+
 var map = [
             [0,100,0,90,0,0,2000,2000,"#555555"],
             [0,0,-1000,0,0,0,2000,200,"#FF0000"],//prieksaa siena
@@ -8,8 +14,26 @@ var map = [
             [-1000,0,0,0,90,0,2000,200,"#FF00FF"]
 ];
 
-function update(){
+function player(x, y, z){
+    this.x = x;
+    this.y = y;
+    this.z = z;
+}
 
+var pawn = new player(0,0,0);
+
+function update(){
+    let dx = left - right;
+    //pawn.y = up - down;
+    let dz = forward - backward;
+
+    pawn.x += dx;
+    pawn.z += dz;
+
+    //console.log(pawn.x);
+
+    console.log(pawn.z);
+    world.style.transform = `translate3d(${pawn.x}px, 0px, ${pawn.z}px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
 }
 
 function createWorld(){
