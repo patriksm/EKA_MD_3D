@@ -31,6 +31,8 @@ function player(x, y, z, rx, ry){
 var pawn = new player(0, 0, 0, 0, 0);
 
 function update(){
+    //let dx = (right - left); 
+    //let dz = -(forward - backward);  
     let dx = (right - left)*Math.cos(pawn.ry*deg) - (forward - backward)*Math.sin(pawn.ry*deg);
     //pawn.y = up - down;
     let dz = - (right - left)*Math.sin(pawn.ry*deg) - (forward - backward)*Math.cos(pawn.ry*deg);
