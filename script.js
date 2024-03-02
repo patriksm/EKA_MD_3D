@@ -47,7 +47,10 @@ function update(){
         pawn.ry += dry;
     }
     
-    world.style.transform = `translateZ(600px) translate3d(${-pawn.x}px, 0px, ${-pawn.z}px) rotateX(${-pawn.rx}deg) rotateY(${-pawn.ry}deg)`;
+    world.style.transform = `translateZ(600px) 
+    rotateX(${-pawn.rx}deg) 
+    rotateY(${-pawn.ry}deg) 
+    translate3d(${-pawn.x}px, 0px, ${-pawn.z}px)`;
 }
 
 function createWorld(){
