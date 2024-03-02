@@ -1,4 +1,5 @@
 var world = document.getElementById("world");
+var container = document.getElementById("container");
 
 var velocity = 5;
 var forward = 0;
@@ -7,6 +8,7 @@ var left = 0;
 var right = 0;
 var mouseX = 0;
 var mouseY = 0;
+var lock = false;
 
 var map = [
             [0,100,0,90,0,0,2000,2000,"#555555"],
@@ -31,18 +33,19 @@ function update(){
     //pawn.y = up - down;
     let dz = forward - backward;
     let drx = mouseY;
-    //let dry = ;
+    let dry = - mouseX;
 
-    mouseY = 0;
+    mouseX = mouseY = 0;
 
     pawn.x += dx;
     pawn.z += dz;
-    pawn.rx += drx
 
-    //console.log(pawn.x);
-
-    //console.log(pawn.z);
-    world.style.transform = `translate3d(${pawn.x}px, 0px, ${pawn.z}px) rotateX(${-pawn.rx}deg) rotateY(0deg) rotateZ(0deg)`;
+    if (lock) {
+        pawn.rx += drx;
+        pawn.ry += dry;
+    }
+    
+    world.style.transform = `translateZ(600px) translate3d(${pawn.x}px, 0px, ${pawn.z}px) rotateX(${-pawn.rx}deg) rotateY(${-pawn.ry}deg) rotateZ(0deg)`;
 }
 
 function createWorld(){

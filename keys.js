@@ -31,5 +31,14 @@ document.addEventListener("keyup", (event) => {
 document.addEventListener("mousemove", (event) => {
 	mouseX = event.movementX;
 	mouseY = event.movementY;
-	console.log(mouseX, mouseY);
 });
+
+document.addEventListener("pointerlockchange", (event) => {
+	lock = !lock;
+});
+
+container.onclick = function(){
+	if(!lock){
+		container.requestPointerLock();
+	}
+}
