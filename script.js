@@ -5,6 +5,8 @@ var forward = 0;
 var backward = 0;
 var left = 0;
 var right = 0;
+var mouseX = 0;
+var mouseY = 0;
 
 var map = [
             [0,100,0,90,0,0,2000,2000,"#555555"],
@@ -14,26 +16,33 @@ var map = [
             [-1000,0,0,0,90,0,2000,200,"#FF00FF"]
 ];
 
-function player(x, y, z){
+function player(x, y, z, rx, ry){
     this.x = x;
     this.y = y;
     this.z = z;
+    this.rx = rx;
+    this.ry = ry;
 }
 
-var pawn = new player(0,0,0);
+var pawn = new player(0, 0, 0, 0, 0);
 
 function update(){
     let dx = left - right;
     //pawn.y = up - down;
     let dz = forward - backward;
+    let drx = mouseY;
+    //let dry = ;
+
+    mouseY = 0;
 
     pawn.x += dx;
     pawn.z += dz;
+    pawn.rx += drx
 
     //console.log(pawn.x);
 
-    console.log(pawn.z);
-    world.style.transform = `translate3d(${pawn.x}px, 0px, ${pawn.z}px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
+    //console.log(pawn.z);
+    world.style.transform = `translate3d(${pawn.x}px, 0px, ${pawn.z}px) rotateX(${-pawn.rx}deg) rotateY(0deg) rotateZ(0deg)`;
 }
 
 function createWorld(){

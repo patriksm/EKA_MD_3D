@@ -27,3 +27,9 @@ document.addEventListener("keyup", (event) => {
 		left = 0;
 	}
 });
+
+document.addEventListener("mousemove", (event) => {
+	mouseX = event.movementX;
+	mouseY = event.movementY;
+	console.log(mouseX, mouseY);
+});
