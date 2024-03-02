@@ -1,6 +1,8 @@
 var world = document.getElementById("world");
 var container = document.getElementById("container");
 
+var PI = Math.PI;
+var deg = PI/180; // cik radiāni ir vienā grādā 
 var velocity = 5;
 var forward = 0;
 var backward = 0;
@@ -29,11 +31,11 @@ function player(x, y, z, rx, ry){
 var pawn = new player(0, 0, 0, 0, 0);
 
 function update(){
-    let dx = left - right;
+    let dx = (right - left)*Math.cos(pawn.ry*deg) - (forward - backward)*Math.sin(pawn.ry*deg);
     //pawn.y = up - down;
-    let dz = forward - backward;
+    let dz = - (right - left)*Math.sin(pawn.ry*deg) - (forward - backward)*Math.cos(pawn.ry*deg);
     let drx = mouseY;
-    let dry = - mouseX;
+    let dry = -mouseX;
 
     mouseX = mouseY = 0;
 
@@ -45,7 +47,7 @@ function update(){
         pawn.ry += dry;
     }
     
-    world.style.transform = `translateZ(600px) translate3d(${pawn.x}px, 0px, ${pawn.z}px) rotateX(${-pawn.rx}deg) rotateY(${-pawn.ry}deg) rotateZ(0deg)`;
+    world.style.transform = `translateZ(600px) translate3d(${-pawn.x}px, 0px, ${-pawn.z}px) rotateX(${-pawn.rx}deg) rotateY(${-pawn.ry}deg)`;
 }
 
 function createWorld(){
